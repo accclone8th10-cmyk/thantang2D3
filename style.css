@@ -1,13 +1,13 @@
-html, body {
+body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: #050a0f; /* Màu tối huyền bí */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #050a0f;
+  font-family: 'Segoe UI', sans-serif;
   color: white;
+  position: relative; /* Fix layering từ góp ý của bạn */
 }
 
-/* Hiệu ứng nền mờ ảo */
 body::before {
   content: "";
   position: absolute;
@@ -16,41 +16,23 @@ body::before {
   z-index: -1;
 }
 
-canvas {
-  display: block;
-}
-
-/* Lớp UI Overlay */
 #ui-layer {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
-  pointer-events: none; /* Cho phép click xuyên qua vào canvas */
+  top: 0; left: 0; width: 100%; padding: 20px;
+  pointer-events: none;
+  z-index: 10;
 }
 
 .stat-bar {
-  width: 300px;
-  height: 25px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid #4a90e2;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-top: 5px;
-  box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+  width: 300px; height: 12px; /* Làm thanh tiến trình thanh thoát hơn */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  border-radius: 10px;
+  margin-top: 8px;
 }
 
 #progress {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
-  transition: width 0.3s;
-}
-
-.level-text {
-  font-size: 24px;
-  font-weight: bold;
-  color: #ffeb3b;
-  text-shadow: 2px 2px 4px #000;
+  width: 0%; height: 100%;
+  border-radius: 10px;
+  transition: width 0.2s, background 0.5s; /* Hiệu ứng đổi màu mượt */
 }
